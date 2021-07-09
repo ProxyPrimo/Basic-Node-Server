@@ -12,7 +12,7 @@ const server = http.createServer((req, res) => {
     res.write("</form>");
     res.write("</body>");
     res.write("</html>");
-    res.end();
+    return res.end();
     }
 
     res.write("<html>");

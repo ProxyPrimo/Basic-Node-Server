@@ -18,6 +18,23 @@ const requestHandler = (req, res) => {
       </ul>
       `);
       break;
+    case "/create-user":
+      if (method === "POST") {
+        const body = [];
+        req.on("data", (chunk) => {
+          body.push(chunk);
+        });
+
+        return req.on("end", () => {
+          const parseBody = Buffer.concat(body).toString();
+          const username = parseBody.split("=")[1];
+
+          console.log(username);
+          return res.end();
+        });
+      }
+      
+      break;
     default:
       res.write(`
       <h1>Hello</h1>
